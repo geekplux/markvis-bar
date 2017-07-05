@@ -1,5 +1,5 @@
 const output = require('d3node-output');
-const d3nBar = require('../');
+const markvisBar = require('../');
 
 const gen = n => {
   const data = [];
@@ -15,4 +15,4 @@ const gen = n => {
 };
 
 // create output files
-output('./example/output', d3nBar({ data: gen(20) }));
+output('./example/output', markvisBar({ data: gen(20) }));
