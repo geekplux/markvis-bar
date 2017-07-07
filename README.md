@@ -5,14 +5,18 @@ BarChart generator in browser and node.js.
 ## Install
 
 ```bash
-npm install
+npm install markvis-bar --save
+
+or use yarn
+
+yarn add markvis-bar --save
 ```
 
 ## Usage
 
 ```js
 const markvisBar = require('markvis-bar');
-const bar = markvisBar(data, selector, container, style)
+const bar = markvisBar({ data, d3, d3node })
 ```
 
 Check out the [example](./example) for usage.
@@ -30,7 +34,7 @@ npm start
 
 ## API
 
-### markvisBar(data[, selector, container, style])
+### markvisBar({ data, d3, d3node[, selector, container, style]})
 
 #### options
 
@@ -39,6 +43,18 @@ npm start
 - Type: `Array`
 
 Data from file or web processed by d3 library.
+
+##### d3
+
+- Type: `Object`
+
+d3 library which used in **browser** environment.
+
+##### d3node
+
+- Type: `Object`
+
+d3-node library which used in **node** environment.
 
 ##### selector
 
@@ -59,11 +75,8 @@ DOM contain the visualization result.
 - Type: `String`<br>
 - Default:
 ```html
-.bar{fill: steelblue;}
-.bar:hover{fill: brown;}
-.axis{font: 10px sans-serif;}
-.axis path,.axis line{fill: none;stroke: #000;shape-rendering: crispEdges;}
-.x.axis path{display: none;}
+.bar {fill: steelblue;}
+.bar:hover {fill: brown;}
 ```
 Barchart style.
 
