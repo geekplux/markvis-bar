@@ -1,3 +1,17 @@
+function addStyle (css) {
+  const head = document.head || document.getElementsByTagName('head')[0];
+  const style = document.createElement('style');
+
+  style.type = 'text/css';
+  if (style.styleSheet){
+    style.styleSheet.cssText = css;
+  } else {
+    style.appendChild(document.createTextNode(css));
+  }
+
+  head.appendChild(style);
+}
+
 function bar ({
   data,
   d3,
@@ -24,6 +38,7 @@ function bar ({
   let _d3;
   let d3n;
   let svg;
+  let _div;
 
   if (d3node) {
     d3n = new d3node({
@@ -34,8 +49,11 @@ function bar ({
     _d3 = d3n.d3;
     svg = d3n.createSVG();
   } else {
+    _div = document.createElement('div');
+    _div.innerHTML = _container;
     _d3 = d3;
-    svg = d3.select('#chart').append('svg');
+    svg = _d3.select(_div).select('#chart').append('svg');
+    addStyle(_svgStyles);
   }
 
   const width = _width - _margin.left - _margin.right;
@@ -77,7 +95,8 @@ function bar ({
 
   let result;
   if (d3node) result = d3n.chartHTML();
-  else result = _d3.select('#chart').html();
+  else result = _div.querySelector('#container').innerHTML;
+
   return result;
 }
 
