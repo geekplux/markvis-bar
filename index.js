@@ -1,12 +1,7 @@
-const d3 = require('d3');
-const D3Node = require('d3-node');
-
-function isNode () {
-  return Object.prototype.toString.call(typeof process !== 'undefined' ? process : 0) === '[object process]';
-}
-
 function bar ({
   data,
+  d3,
+  d3node,
   selector: _selector = '#chart',
   container: _container = `
     <div id="container">
@@ -26,13 +21,12 @@ function bar ({
     .bar:hover { fill: ${_barHoverColor}; }
   `;
 
-
   let _d3;
-  let svg;
   let d3n;
+  let svg;
 
-  if (isNode()) {
-    d3n = new D3Node({
+  if (d3node) {
+    d3n = new d3node({
       selector: _selector,
       styles: _svgStyles + _style,
       container: _container
@@ -82,8 +76,8 @@ function bar ({
   svg.append('g').call(_d3.axisLeft(y));
 
   let result;
-  if (isNode()) result = d3n.chartHTML();
-  else result = d3.select('#chart').html();
+  if (d3node) result = d3n.chartHTML();
+  else result = _d3.select('#chart').html();
   return result;
 }
 
