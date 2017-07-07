@@ -29,11 +29,12 @@ function bar ({
   margin: _margin = { top: 20, right: 20, bottom: 30, left: 40 },
   barColor: _barColor = 'steelblue',
   barHoverColor: _barHoverColor = 'brown',
+  export: _export = false,
 } = {}) {
   const _svgStyles = `
     .bar { fill: ${_barColor}; }
     .bar:hover { fill: ${_barHoverColor}; }
-  `;
+  ` + _style;
 
   let _d3;
   let d3n;
@@ -43,7 +44,7 @@ function bar ({
   if (d3node) {
     d3n = new d3node({
       selector: _selector,
-      styles: _svgStyles + _style,
+      styles: _svgStyles,
       container: _container
     });
     _d3 = d3n.d3;
@@ -94,8 +95,10 @@ function bar ({
   svg.append('g').call(_d3.axisLeft(y));
 
   let result;
-  if (d3node) result = d3n.chartHTML();
-  else result = _div.querySelector('#container').innerHTML;
+  if (d3node) {
+    if (_export) result = d3n;
+    else result = d3n.chartHTML();
+  } else result = _div.querySelector('#container').innerHTML;
 
   return result;
 }

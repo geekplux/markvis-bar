@@ -14,10 +14,15 @@
   "keywords": [
     "d3",
     "vis",
+    "visualization",
     "markvis",
     "markvis-plugin",
     "markvis-bar"
   ],
   "author": "GeekPlux <geekplux@gmail.com> (https://github.com/geekplux)",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "d3-node": "^1.0.3",
+    "d3node-output": "^0.0.9"
+  }
 }

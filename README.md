@@ -1,6 +1,6 @@
 ## BarChart
 
-BarChart generator in browser and node.js.
+BarChart generator for [markvis](https://github.com/geekplux/markvis) in browser and node.js.
 
 ## Install
 
@@ -48,13 +48,13 @@ Data from file or web processed by d3 library.
 
 - Type: `Object`
 
-d3 library which used in **browser** environment.
+`d3` library which used in **browser** environment.
 
 ##### d3node
 
 - Type: `Object`
 
-d3-node library which used in **node** environment.
+`d3-node` library which used in **node** environment.
 
 ##### selector
 
