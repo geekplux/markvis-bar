@@ -26,7 +26,7 @@ function bar ({
   style: _style = '',
   width: _width = 960,
   height: _height = 500,
-  margin: _margin = { top: 20, right: 20, bottom: 30, left: 40 },
+  margin: _margin = { top: 20, right: 20, bottom: 20, left: 20 },
   barColor: _barColor = 'steelblue',
   barHoverColor: _barHoverColor = 'brown',
   export: _export = false,
@@ -60,10 +60,10 @@ function bar ({
   const width = _width - _margin.left - _margin.right;
   const height = _height - _margin.top - _margin.bottom;
 
-  svg.attr('width', _width)
-    .attr('height', _height)
-    .append('g')
-    .attr('transform', `translate(${_margin.left}, ${_margin.top})`);
+  const g = svg.attr('width', _width)
+        .attr('height', _height)
+        .append('g')
+        .attr('transform', `translate(${_margin.left}, ${_margin.top})`);
 
   // set the ranges
   const x = _d3.scaleBand()
@@ -77,7 +77,7 @@ function bar ({
   y.domain([0, _d3.max(data, (d) => d.value)]);
 
   // append the rectangles for the bar chart
-  svg.selectAll('.bar')
+  g.selectAll('.bar')
     .data(data)
     .enter().append('rect')
     .attr('class', 'bar')
@@ -87,12 +87,12 @@ function bar ({
     .attr('height', (d) => height - y(d.value));
 
   // add the x Axis
-  svg.append('g')
+  g.append('g')
     .attr('transform', `translate(0,${height})`)
     .call(_d3.axisBottom(x));
 
   // add the y Axis
-  svg.append('g').call(_d3.axisLeft(y));
+  g.append('g').call(_d3.axisLeft(y));
 
   let result;
   if (d3node) {
