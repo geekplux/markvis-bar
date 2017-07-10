@@ -1,6 +1,8 @@
 ## BarChart
 
-Bar chart generator for [markvis](https://github.com/geekplux/markvis) in browser and node.js.
+> Bar chart generator for [markvis](https://github.com/geekplux/markvis) in browser and node.js.
+
+[![NPM version](https://img.shields.io/npm/v/markvis-bar.svg?style=flat-square)](https://npmjs.com/package/markvis-bar) [![NPM downloads](https://img.shields.io/npm/dm/markvis-bar.svg?style=flat-square)](https://npmjs.com/package/markvis-bar) [![donate](https://img.shields.io/badge/$-donate-ff69b4.svg?maxAge=2592000&style=flat-square)](https://geekplux.github.io/donate)
 
 ## Install
 
@@ -21,13 +23,13 @@ const bar = markvisBar({ data, d3, d3node })
 
 Check out the [example](./example) for usage.
 
-##### Output the visualization result to a image
+#### Output the visualization result to a PNG image
 
 ```
-npm start
+npm run example
 ```
 
-## Output Preview (png):
+#### Output Preview (png):
 
 ![chart](./example/output.png)
 
@@ -52,9 +54,9 @@ Data from file or web processed by d3 library.
 
 ##### d3node
 
-- Type: `Object`
+- Type: `Function`
 
-`d3-node` library which used in **node** environment.
+`d3-node` constructor which used in **node** environment.
 
 ##### selector
 
@@ -78,7 +80,50 @@ DOM contained the visualization result.
 .bar {fill: steelblue;}
 .bar:hover {fill: brown;}
 ```
-Barchart style.
+Bar chart style.
+
+##### width
+
+- Type: `Number`<br>
+- Default: `960`
+
+SVG width for bar chart.
+
+##### height
+
+- Type: `Number`<br>
+- Default: `500`
+
+SVG height for bar chart.
+
+##### margin
+
+- Type: `Object`<br>
+- Default: `{ top: 20, right: 20, bottom: 20, left: 20 }`
+
+Margin of the first <g> wrapper in SVG, usually used to add axis.
+
+##### barColor
+
+- Type: `string`<br>
+- Default: `steelblue`
+
+Color of bar.
+
+##### barHoverColor
+
+- Type: `string`<br>
+- Default: `steelblue`
+
+Color of bar hoverd.
+
+##### export
+
+- Type: `boolean`<br>
+- Default: `false`
+
+Whether to export to a PNG image.
+
 
 ## Contributing
 
@@ -94,4 +139,4 @@ Barchart style.
 **markvis-bar** © [geekplux](https://github.com/geekplux), Released under the [MIT](./LICENSE) License.<br>
 Authored and maintained by geekplux with help from contributors ([list](https://github.com/geekplux/markvis/contributors)).
 
-> [github.com/geekplux](https://github.com/geekplux) · GitHub [@geekplux](https://github.com/geekplux) · Twitter [@geekplux](https://twitter.com/geekplux)
+> [geekplux.com](http://geekplux.com) · GitHub [@geekplux](https://github.com/geekplux) · Twitter [@geekplux](https://twitter.com/geekplux)

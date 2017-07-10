@@ -13,7 +13,7 @@ const { addStyle } = require('./utils.js')
  * @param {function} D3Node D3Node will get in node environment
  * @param {string} selector DOM selector in container
  * @param {string} container DOM contained the visualization result
- * @param {string} style
+ * @param {string} style Bar chart style
  * @param {number} width
  * @param {number} height
  * @param {object} margin
@@ -45,7 +45,6 @@ function bar ({
     .bar { fill: ${_barColor}; }
     .bar:hover { fill: ${_barHoverColor}; }
   ` + _style
-
 
   let _d3 // Instance of d3
   let d3n // Instance of D3Node
