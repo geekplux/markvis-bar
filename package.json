@@ -1,10 +1,11 @@
 {
   "name": "markvis-bar",
   "version": "0.0.5",
-  "description": "markvis-bar",
-  "main": "index.js",
+  "description": "Bar chart generator for markvis in browser and node.js",
+  "main": "./src/index.js",
   "scripts": {
     "start": "node ./example",
+    "lint": "xo",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -23,6 +24,15 @@
   "license": "MIT",
   "devDependencies": {
     "d3-node": "^1.0.3",
-    "d3node-output": "^0.0.9"
+    "d3node-output": "^0.0.9",
+    "eslint-config-geekplux": "^1.0.3",
+    "xo": "^0.18.2"
+  },
+  "xo": {
+    "extends": "geekplux",
+    "esnext": true,
+    "envs": [
+      "jest"
+    ]
   }
 }
