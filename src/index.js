@@ -1,35 +1,45 @@
+/**
+ * @fileOverview Generate bar chart for markvis
+ * @name index.js<src>
+ * @author GeekPlux
+ * @license MIT
+ */
 const { addStyle } = require('./utils.js')
 
 function bar ({
   data,
-  d3,
-  d3node: D3Node,
-  selector: _selector = '#chart',
+  d3, // d3 will get in browser environment
+  d3node: D3Node, // D3Node will get in node environment
+  selector: _selector = '#chart', // DOM selector in container
   container: _container = `
     <div id="container">
       <h2>Bar Chart</h2>
       <div id="chart"></div>
     </div>
-  `,
+  `, // DOM contained the visualization result.
   style: _style = '',
   width: _width = 960,
   height: _height = 500,
   margin: _margin = { top: 20, right: 20, bottom: 20, left: 20 },
   barColor: _barColor = 'steelblue',
   barHoverColor: _barHoverColor = 'brown',
-  export: _export = false
+  export: _export = false // Whether to export to a PNG image
 } = {}) {
   const _svgStyles = `
     .bar { fill: ${_barColor}; }
     .bar:hover { fill: ${_barHoverColor}; }
   ` + _style
 
-  let _d3
-  let d3n
-  let svg
-  let _div
 
-  if (D3Node) {
+  let _d3 // Instance of d3
+  let d3n // Instance of D3Node
+  let svg // SVG element held the bar chart
+  let _div // Temporary DOM element used to operate
+
+  const isNodeEnv = () => D3Node // To check node environment
+
+  if (isNodeEnv) {
+    // Node environment
     d3n = new D3Node({
       selector: _selector,
       styles: _svgStyles,
@@ -38,11 +48,12 @@ function bar ({
     _d3 = d3n.d3
     svg = d3n.createSVG()
   } else {
+    // Browser environment
     _div = document.createElement('div')
     _div.innerHTML = _container
     _d3 = d3
     svg = _d3.select(_div).select('#chart').append('svg')
-    addStyle(_svgStyles)
+    addStyle(_svgStyles) // Add style for bar chart in browser
   }
 
   const width = _width - _margin.left - _margin.right
@@ -83,7 +94,7 @@ function bar ({
   g.append('g').call(_d3.axisLeft(y))
 
   let result
-  if (D3Node) {
+  if (isNodeEnv) {
     if (_export) result = d3n
     else result = d3n.chartHTML()
   } else result = _div.querySelector('#container').innerHTML

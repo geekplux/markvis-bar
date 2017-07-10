@@ -1,6 +1,6 @@
 const d3node = require('d3-node')
 const output = require('d3node-output')
-const markvisBar = require('../')
+const markvisBar = require('../src')
 
 const gen = n => {
   const data = []

@@ -1,6 +1,6 @@
 ## BarChart
 
-BarChart generator for [markvis](https://github.com/geekplux/markvis) in browser and node.js.
+Bar chart generator for [markvis](https://github.com/geekplux/markvis) in browser and node.js.
 
 ## Install
 
@@ -68,7 +68,7 @@ DOM selector in container.
 - Type: `String`
 - Default: `<div id="container"><h2>Bar Chart</h2><div id="chart"></div></div>`
 
-DOM contain the visualization result.
+DOM contained the visualization result.
 
 ##### style
 

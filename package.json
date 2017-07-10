@@ -4,7 +4,7 @@
   "description": "Bar chart generator for markvis in browser and node.js",
   "main": "./src/index.js",
   "scripts": {
-    "start": "node ./example",
+    "example": "node ./example",
     "lint": "xo",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
