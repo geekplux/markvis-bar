@@ -1,3 +1,7 @@
+/**
+ * Add style in browser
+ * @param {string} css
+ */
 exports.addStyle = function (css) {
   const head = document.head || document.getElementsByTagName('head')[0]
   const style = document.createElement('style')

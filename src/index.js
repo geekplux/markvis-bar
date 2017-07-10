@@ -6,24 +6,40 @@
  */
 const { addStyle } = require('./utils.js')
 
+/**
+ *
+ * @param {array} data
+ * @param {object} d3 d3 will get in browser environment
+ * @param {function} D3Node D3Node will get in node environment
+ * @param {string} selector DOM selector in container
+ * @param {string} container DOM contained the visualization result
+ * @param {string} style
+ * @param {number} width
+ * @param {number} height
+ * @param {object} margin
+ * @param {string} barColor
+ * @param {string} barHoverColor
+ * @param {boolean} export Whether to export to a PNG image
+ * @returns {}
+ */
 function bar ({
   data,
-  d3, // d3 will get in browser environment
-  d3node: D3Node, // D3Node will get in node environment
-  selector: _selector = '#chart', // DOM selector in container
+  d3,
+  d3node: D3Node,
+  selector: _selector = '#chart',
   container: _container = `
     <div id="container">
       <h2>Bar Chart</h2>
       <div id="chart"></div>
     </div>
-  `, // DOM contained the visualization result.
+  `,
   style: _style = '',
   width: _width = 960,
   height: _height = 500,
   margin: _margin = { top: 20, right: 20, bottom: 20, left: 20 },
   barColor: _barColor = 'steelblue',
   barHoverColor: _barHoverColor = 'brown',
-  export: _export = false // Whether to export to a PNG image
+  export: _export = false
 } = {}) {
   const _svgStyles = `
     .bar { fill: ${_barColor}; }
