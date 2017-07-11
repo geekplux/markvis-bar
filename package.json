@@ -1,6 +1,6 @@
 {
   "name": "markvis-bar",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Bar chart generator for markvis in browser and node.js",
   "main": "./dist/index",
   "scripts": {
