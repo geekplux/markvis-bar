@@ -10,7 +10,8 @@
     "build": "rm -rf ./dist && mkdir dist && ./node_modules/.bin/babel src -d dist",
     "prepublish": "npm run build",
     "test": "jest && npm run lint",
-    "test:cov": "jest --coverage"
+    "test:cover": "jest --coverage",
+    "test:cover:travis": "npm run test:cover && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls"
   },
   "repository": {
     "type": "git",
