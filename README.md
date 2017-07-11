@@ -2,7 +2,7 @@
 
 > Bar chart generator for [markvis](https://github.com/geekplux/markvis) in browser and node.js.
 
-[![NPM version](https://img.shields.io/npm/v/markvis-bar.svg?style=flat-square)](https://npmjs.com/package/markvis-bar) [![NPM downloads](https://img.shields.io/npm/dm/markvis-bar.svg?style=flat-square)](https://npmjs.com/package/markvis-bar) [![Build](https://travis-ci.org/netjson/netjsongraph.js.svg?style=flat-square)](https://travis-ci.org/geekplux/markvis-bar) [![Coverage](https://coveralls.io/repos/github/geekplux/markvis-bar/badge.svg?style=flat-square)](https://coveralls.io/github/geekplux/markvis-bar) [![donate](https://img.shields.io/badge/$-donate-ff69b4.svg?maxAge=2592000&style=flat-square)](https://geekplux.github.io/donate)
+[![NPM version](https://img.shields.io/npm/v/markvis-bar.svg?style=flat-square)](https://npmjs.com/package/markvis-bar) [![NPM downloads](https://img.shields.io/npm/dm/markvis-bar.svg?style=flat-square)](https://npmjs.com/package/markvis-bar) [![Build](https://travis-ci.org/geekplux/markvis-bar.svg?style=flat-square)](https://travis-ci.org/geekplux/markvis-bar) [![Coverage](https://coveralls.io/repos/github/geekplux/markvis-bar/badge.svg?style=flat-square)](https://coveralls.io/github/geekplux/markvis-bar) [![donate](https://img.shields.io/badge/$-donate-ff69b4.svg?maxAge=2592000&style=flat-square)](https://geekplux.github.io/donate)
 
 ## Install
 
@@ -50,13 +50,13 @@ Data from file or web processed by d3 library.
 
 - Type: `Object`
 
-`d3` library which used in **browser** environment.
+[d3](https://github.com/d3/d3) library which used in **browser** environment.
 
 ##### d3node
 
 - Type: `Function`
 
-`d3-node` constructor which used in **node** environment.
+[d3-node](https://github.com/d3-node/d3-node) constructor which used in **node** environment.
 
 ##### selector
 
@@ -113,7 +113,7 @@ Color of bar.
 ##### barHoverColor
 
 - Type: `string`<br>
-- Default: `steelblue`
+- Default: `brown`
 
 Color of bar hoverd.
 

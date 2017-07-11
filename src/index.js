@@ -7,7 +7,7 @@
 const { addStyle } = require('./utils')
 
 /**
- *
+ * Bar chart generator
  * @param {array} data
  * @param {object} d3 d3 will get in browser environment
  * @param {function} D3Node D3Node will get in node environment
