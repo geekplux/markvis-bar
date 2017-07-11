@@ -2,14 +2,15 @@
   "name": "markvis-bar",
   "version": "0.0.5",
   "description": "Bar chart generator for markvis in browser and node.js",
-  "main": "./dist/bundle.js",
+  "main": "./dist/index",
   "module": "index",
   "scripts": {
     "example": "node ./example",
     "lint": "xo",
-    "build": "rm -rf ./dist && mkdir dist && ./node_modules/.bin/babel src | ./node_modules/.bin/uglifyjs --compress --mangle --output dist/bundle.js",
+    "build": "rm -rf ./dist && mkdir dist && ./node_modules/.bin/babel src -d dist",
     "prepublish": "npm run build",
-    "test": "jest && npm run lint"
+    "test": "jest && npm run lint",
+    "test:cov": "jest --coverage"
   },
   "repository": {
     "type": "git",

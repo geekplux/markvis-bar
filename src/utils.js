@@ -2,7 +2,7 @@
  * Add style in browser
  * @param {string} css
  */
-function addStyle (css) {
+exports.addStyle = css => {
   const head = document.head || document.getElementsByTagName('head')[0]
   const style = document.createElement('style')
 
@@ -15,5 +15,3 @@ function addStyle (css) {
 
   head.appendChild(style)
 }
-
-export default addStyle

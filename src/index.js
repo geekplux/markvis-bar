@@ -4,7 +4,7 @@
  * @author GeekPlux
  * @license MIT
  */
-import addStyle from './utils'
+const { addStyle } = require('./utils')
 
 /**
  *
@@ -22,7 +22,7 @@ import addStyle from './utils'
  * @param {boolean} export Whether to export to a PNG image
  * @returns {}
  */
-export default function bar ({
+function bar ({
   data,
   d3,
   d3node: D3Node,
@@ -116,3 +116,5 @@ export default function bar ({
 
   return result
 }
+
+module.exports = bar
