@@ -4,9 +4,9 @@
  * @author GeekPlux
  * @license MIT
  */
-const d3node = require('d3-node')
-const output = require('d3node-output')
-const markvisBar = require('../src')
+import d3node from 'd3-node'
+import output from 'd3node-output'
+import markvisBar from '../src'
 
 /**
  * Generate random data to a array

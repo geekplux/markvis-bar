@@ -4,7 +4,7 @@
  * @author GeekPlux
  * @license MIT
  */
-import { addStyle } from './utils.js'
+import addStyle from './utils'
 
 /**
  *
