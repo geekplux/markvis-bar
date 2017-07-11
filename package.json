@@ -11,7 +11,7 @@
     "prepublish": "npm run build",
     "test": "jest && npm run lint",
     "test:cover": "jest --coverage",
-    "test:cover:travis": "npm run test:cover && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls"
+    "test:cover:travis": "npm run test:cover && cat ./coverage/lcov.info | ./node_modules/.bin/coveralls"
   },
   "repository": {
     "type": "git",
