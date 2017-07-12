@@ -53,7 +53,7 @@ function bar ({
 
   const isNodeEnv = () => D3Node // To check node environment
 
-  if (isNodeEnv) {
+  if (isNodeEnv()) {
     // Node environment
     d3n = new D3Node({
       selector: _selector,
@@ -109,7 +109,7 @@ function bar ({
   g.append('g').call(_d3.axisLeft(y))
 
   let result
-  if (isNodeEnv) {
+  if (isNodeEnv()) {
     if (_export) result = d3n
     else result = d3n.chartHTML()
   } else result = _div.querySelector('#container').innerHTML

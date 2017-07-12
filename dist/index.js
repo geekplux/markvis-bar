@@ -44,7 +44,7 @@ function bar() {
     return D3Node;
   };
 
-  if (isNodeEnv) {
+  if (isNodeEnv()) {
     d3n = new D3Node({
       selector: _selector,
       styles: _svgStyles,
@@ -89,7 +89,7 @@ function bar() {
   g.append('g').call(_d3.axisLeft(y));
 
   var result = void 0;
-  if (isNodeEnv) {
+  if (isNodeEnv()) {
     if (_export) result = d3n;else result = d3n.chartHTML();
   } else result = _div.querySelector('#container').innerHTML;
 
