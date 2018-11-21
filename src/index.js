@@ -14,9 +14,13 @@ const { addStyle } = require('./utils')
  * @param {string} selector DOM selector in container
  * @param {string} container DOM contained the visualization result
  * @param {string} style Bar chart style
+ * @param {object} barAttrs Bar element attributes
  * @param {number} width
  * @param {number} height
+ * @param {boolean} responsive Whether the chart should be automatically resized to fit its container. If true, width and height options are used for the initial sizing/SVG viewBox size.
  * @param {object} margin
+ * @param {boolean} showXAxis Whether to show the X axis
+ * @param {boolean} showYAxis Whether to show the Y axis
  * @param {string} barColor
  * @param {string} barHoverColor
  * @param {boolean} export Whether to export to a PNG image
@@ -34,9 +38,14 @@ function bar ({
     </div>
   `,
   style: _style = '',
+  barAttrs: _barAttrs = {},
   width: _width = 960,
   height: _height = 500,
+  responsive: _responsive = false,
   margin: _margin = { top: 20, right: 20, bottom: 20, left: 20 },
+  showXAxis: _showXAxis = true,
+  showYAxis: _showYAxis = true,
+  showValues: _showValues = true,
   barColor: _barColor = 'steelblue',
   barHoverColor: _barHoverColor = 'brown',
   export: _export = false
@@ -74,10 +83,16 @@ function bar ({
   const width = _width - _margin.left - _margin.right
   const height = _height - _margin.top - _margin.bottom
 
-  const g = svg.attr('width', _width)
-        .attr('height', _height)
-        .append('g')
+  const g = svg.append('g')
         .attr('transform', `translate(${_margin.left}, ${_margin.top})`)
+
+  if (_responsive) {
+    svg.attr('viewBox', `0 0 ${_width} ${_height}`)
+        .attr('preserveAspectRatio', 'xMinYMin')
+  } else {
+    svg.attr('width', _width)
+        .attr('height', _height)
+  }
 
   // Set the ranges
   const x = _d3.scaleBand()
@@ -100,13 +115,39 @@ function bar ({
     .attr('y', d => y(d.value))
     .attr('height', d => height - y(d.value))
 
+  const keys = Object.keys(_barAttrs)
+  for (var i = 0; i < keys.length; i++) {
+    g.selectAll('.bar')
+      .attr(keys[i], d => _barAttrs[keys[i]](d.value))
+  }
+
+  // Value labels on top of each column.
+  if (_showValues) {
+	g.append('g')
+	  .selectAll('text')
+	  .data(data)
+	  .enter().append('text')
+	  .attr('class', 'bar-value-label')
+	  .attr('text-anchor', 'middle')
+	  .attr('x', d => x(d.key))
+	  .attr('dx', x.bandwidth() / 2)
+	  .attr('y', d => y(d.value))
+	  .attr('dy', '-0.5em')
+	  .attr('fill', 'currentColor')
+	  .text(d => d.value)
+  }
+
   // Add the x Axis
-  g.append('g')
-    .attr('transform', `translate(0,${height})`)
-    .call(_d3.axisBottom(x))
+  if (_showXAxis) {
+    g.append('g')
+        .attr('transform', `translate(0,${height})`)
+        .call(_d3.axisBottom(x))
+  }
 
   // Add the y Axis
-  g.append('g').call(_d3.axisLeft(y))
+  if (_showYAxis) {
+    g.append('g').call(_d3.axisLeft(y))
+  }
 
   let result
   if (isNodeEnv()) {
