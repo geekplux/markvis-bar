@@ -21,6 +21,7 @@ const { addStyle } = require('./utils')
  * @param {object} margin
  * @param {boolean} showXAxis Whether to show the X axis
  * @param {boolean} showYAxis Whether to show the Y axis
+ * @param {boolean} showValues Whether to show values above each bar
  * @param {string} barColor
  * @param {string} barHoverColor
  * @param {boolean} export Whether to export to a PNG image
