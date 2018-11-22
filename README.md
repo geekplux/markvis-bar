@@ -82,6 +82,13 @@ DOM contained the visualization result.
 ```
 Bar chart style.
 
+##### barAttrs
+
+- Type: `Object`<br>
+- Default: `{}`
+
+Attributes set on each bar element.
+
 ##### width
 
 - Type: `Number`<br>
@@ -95,6 +102,13 @@ SVG width for bar chart.
 - Default: `500`
 
 SVG height for bar chart.
+
+##### responsive
+
+- Type: `boolean`<br>
+- Default: `false`
+
+Whether the chart should be automatically resized to fit its container. If true, `width` and `height` options are used for the initial sizing/SVG viewBox size.
 
 ##### margin
 
@@ -115,7 +129,28 @@ Color of bar.
 - Type: `string`<br>
 - Default: `brown`
 
-Color of bar hoverd.
+Color of bar hovered.
+
+##### showXAxis
+
+- Type: `boolean`<br>
+- Default: `true`
+
+Whether to show the X axis.
+
+##### showYAxis
+
+- Type: `boolean`<br>
+- Default: `true`
+
+Whether to show the Y axis.
+
+##### showValues
+
+- Type: `boolean`<br>
+- Default: `true`
+
+Whether to show values above each bar.
 
 ##### export
 
