@@ -19,5 +19,5 @@ function removeAllSpace (str) {
 
 test('bar chart generator', () => {
   expect(bar).toBeDefined()
-  expect(removeAllSpace(bar({ data, d3node }))).toBe(removeAllSpace(result))
+  expect(removeAllSpace(bar({ data, d3node, showValues: false }))).toBe(removeAllSpace(result))
 })
