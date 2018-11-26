@@ -77,7 +77,7 @@ function bar ({
     _div = document.createElement('div')
     _div.innerHTML = _container
     _d3 = d3
-    svg = _d3.select(_div).select('#chart').append('svg')
+    svg = _d3.select(_div).select(_selector).append('svg')
     addStyle(_svgStyles) // Add style for bar chart in browser
   }
 
@@ -154,7 +154,7 @@ function bar ({
   if (isNodeEnv()) {
     if (_export) result = d3n
     else result = d3n.chartHTML()
-  } else result = _div.querySelector('#container').innerHTML
+  } else result = _div.querySelector(_selector).parentNode.innerHTML
 
   return result
 }
