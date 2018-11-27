@@ -101,10 +101,15 @@ function bar() {
   });
 
   var keys = Object.keys(_barAttrs);
-  for (var i = 0; i < keys.length; i++) {
+
+  var _loop = function _loop(i) {
     g.selectAll('.bar').attr(keys[i], function (d) {
       return _barAttrs[keys[i]](d.value);
     });
+  };
+
+  for (var i = 0; i < keys.length; i++) {
+    _loop(i);
   }
 
   if (_showValues) {

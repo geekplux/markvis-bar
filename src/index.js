@@ -117,25 +117,25 @@ function bar ({
     .attr('height', d => height - y(d.value))
 
   const keys = Object.keys(_barAttrs)
-  for (var i = 0; i < keys.length; i++) {
+  for (let i = 0; i < keys.length; i++) {
     g.selectAll('.bar')
       .attr(keys[i], d => _barAttrs[keys[i]](d.value))
   }
 
   // Value labels on top of each column.
   if (_showValues) {
-	g.append('g')
-	  .selectAll('text')
-	  .data(data)
-	  .enter().append('text')
-	  .attr('class', 'bar-value-label')
-	  .attr('text-anchor', 'middle')
-	  .attr('x', d => x(d.key))
-	  .attr('dx', x.bandwidth() / 2)
-	  .attr('y', d => y(d.value))
-	  .attr('dy', '-0.5em')
-	  .attr('fill', 'currentColor')
-	  .text(d => d.value)
+    g.append('g')
+      .selectAll('text')
+      .data(data)
+      .enter().append('text')
+      .attr('class', 'bar-value-label')
+      .attr('text-anchor', 'middle')
+      .attr('x', d => x(d.key))
+      .attr('dx', x.bandwidth() / 2)
+      .attr('y', d => y(d.value))
+      .attr('dy', '-0.5em')
+      .attr('fill', 'currentColor')
+      .text(d => d.value)
   }
 
   // Add the x Axis
